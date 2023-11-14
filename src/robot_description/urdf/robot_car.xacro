@@ -1,0 +1,16 @@
+<robot name="robot_car" xmlns:xacro="http://wiki.ros.org/xacro">
+    
+    <xacro:include filename="inertia.xacro" />    
+    <xacro:include filename="robot_base.xacro" />
+    <xacro:include filename="camera.xacro" />
+    <xacro:include filename="laser.xacro" />
+    
+    <xacro:include filename="gazebo/move.xacro" />
+    <xacro:include filename="gazebo/laser_sensors.xacro" />
+
+    <!--xacro:include filename="gazebo/camera_sensors.xacro" /-->
+
+    <xacro:include filename="gazebo/kinect_sensors.xacro" />
+
+</robot>
+

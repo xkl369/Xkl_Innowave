@@ -1,0 +1,57 @@
+<launch>
+    <param name="robot_description" textfile="$(find unomove_robot)/urdf/iwt.urdf" />
+    <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
+        <param name="publish_frequency" type="double" value="50.0" />
+    </node> 
+
+     <include file="$(find slamware_ros_sdk)/launch/slamware_ros_sdk_server_node.launch">
+         <arg name="move_base_goal_topic" value="disable"/>
+         <arg name="ip_address" value="192.168.11.1" />
+     </include>
+    <include file="$(find realsense2_camera)/launch/rs_multiple_devices.launch" />
+    
+    <!--
+    <node pkg="nodelet" type="nodelet" name="nodelet_manager" args="manager" />
+
+    <node pkg="nodelet" type="nodelet" name="unomove_left"
+            args="load depth_image_proc/point_cloud_xyz nodelet_manager">
+        <remap from="camera_info" to="/left/depth/camera_info"/>
+        <remap from="image_rect" to="/left/depth/image_rect_raw"/>
+        <remap from="points" to="/left/depth/points"/>
+    </node>
+
+    <node pkg="nodelet" type="nodelet" name="unomove_mid"
+            args="load depth_image_proc/point_cloud_xyz nodelet_manager">
+        <remap from="camera_info" to="/mid/depth/camera_info"/>
+        <remap from="image_rect" to="/mid/depth/image_rect_raw"/>
+        <remap from="points" to="/mid/depth/points"/>
+    </node>
+
+    <node pkg="nodelet" type="nodelet" name="unomove_right"
+            args="load depth_image_proc/point_cloud_xyz nodelet_manager">
+        <remap from="camera_info" to="/right/depth/camera_info"/>
+        <remap from="image_rect" to="/right/depth/image_rect_raw"/>
+        <remap from="points" to="/right/depth/points"/>
+    </node>
+    -->
+
+    <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+        <rosparam file="$(find unomove_robot)/param/iwt/costmap_common_params.yaml" command="load" ns="global_costmap" />
+        <rosparam file="$(find unomove_robot)/param/iwt/costmap_common_params.yaml" command="load" ns="local_costmap" />
+        <rosparam file="$(find unomove_robot)/param/iwt/local_costmap_params.yaml" command="load" />
+        <rosparam file="$(find unomove_robot)/param/iwt/global_costmap_params.yaml" command="load" />
+        <rosparam file="$(find unomove_robot)/param/iwt/teb_local_planner_params.yaml" command="load" ns="TebLocalPlannerROS"/>
+        <!-- Here we load our costmap conversion settings -->
+        <rosparam file="$(find unomove_robot)/param/iwt/costmap_converter.yaml" command="load" />
+        <param name="base_global_planner" value="global_planner/GlobalPlanner" />
+        <param name="planner_frequency" value="1.0" />
+        <param name="planner_patience" value="5.0" />
+
+        <param name="base_local_planner" value="teb_local_planner/TebLocalPlannerROS" />
+        <param name="controller_frequency" value="10.0" />
+        <param name="controller_patience" value="15.0" />
+        <remap from="cmd_vel" to="/unomove/cmd_vel"/>
+    </node>
+
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find slamware_ros_sdk)/rviz/slamware_ros_sdk_teb.rviz" />
+</launch>

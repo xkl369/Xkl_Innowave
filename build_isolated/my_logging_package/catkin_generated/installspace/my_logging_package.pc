@@ -1,0 +1,8 @@
+prefix=/home/xkl/catkin_ws/install_isolated
+
+Name: my_logging_package
+Description: Description of my_logging_package
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/xkl/catkin_ws/src/log_tutorial/src/test_logger.cpp
+iostream
+-
+spdlog/spdlog.h
+/home/xkl/catkin_ws/src/log_tutorial/src/spdlog/spdlog.h
+spdlog/stopwatch.h
+/home/xkl/catkin_ws/src/log_tutorial/src/spdlog/stopwatch.h
+

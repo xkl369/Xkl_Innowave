@@ -1,0 +1,16 @@
+controllers: {
+   base_controller: {
+       type: diff_controller,         #类型：差速控制器类型 
+       base_frame_id: base_footprint, #坐标系
+       base_width: 0.26,              #轮子间距
+       ticks_meter: 4100,             #频率
+       
+       #pid控制
+       Kp: 12, 
+       Kd: 12, 
+       Ki: 0, 
+       Ko: 50, 
+       accel_limit: 1.0               #加速度限制
+    }
+}
+

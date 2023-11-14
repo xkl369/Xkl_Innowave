@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/xkl/catkin_ws/src/my_logging_package/src/logger.cpp
+iostream
+-
+chrono
+-
+ctime
+-
+iomanip
+-
+sstream
+-
+string
+-
+
+/home/xkl/catkin_ws/src/my_logging_package/src/test_logger.cpp
+logger.cpp
+/home/xkl/catkin_ws/src/my_logging_package/src/logger.cpp
+iostream
+-
+

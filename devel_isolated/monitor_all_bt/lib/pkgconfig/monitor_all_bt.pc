@@ -1,0 +1,8 @@
+prefix=/home/xkl/catkin_ws/devel_isolated/monitor_all_bt
+
+Name: monitor_all_bt
+Description: Description of monitor_all_bt
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

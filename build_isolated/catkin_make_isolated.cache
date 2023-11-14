@@ -1,0 +1,2 @@
+arbotix_ros/arbotix:arbotix_ros/arbotix_controllers:arbotix_ros/arbotix_firmware:arbotix_ros/arbotix_msgs:arbotix_ros/arbotix_python:arbotix_ros/arbotix_sensors:marm_description:mbot_description:mbot_teleop:monitor_all_bt:my_logging_package:robot_description
+-G Unix Makefiles -DCATKIN_DEVEL_PREFIX=/home/xkl/catkin_ws/devel_isolated -DCMAKE_INSTALL_PREFIX=/home/xkl/catkin_ws/install_isolated
